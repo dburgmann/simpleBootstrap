@@ -1,6 +1,6 @@
 <?php
-require_once(realpath(dirname(__FILE__).'/../application/Language.php'));
-require_once(realpath(dirname(__FILE__).'/../application/Translator.php'));
+require_once('../application/Language.php'));
+require_once('../application/Translator.php'));
 
 abstract class BootstrapCore {
 	protected $lang		= null;
@@ -13,7 +13,7 @@ abstract class BootstrapCore {
     protected $content 	= '';
     
     public function __construct(){
-    	$lang = new Language();
+    	$lang = Language::instance();
     	$translator = new Translator();
     }
     

@@ -1,10 +1,21 @@
 <?php
 	abstract class LanguageCore{
+		protected static $instance	= null;
+	
 		protected	$allowedLangs	= array();
 		protected 	$defaultLang	= '';
 		private 	$lang	 		= '';
 		
-		public function __construct(){
+		//singleton constructor - requires php 5.3 for late static binding
+		public static function instance(){
+			if(static::$instance == null){
+				static::$instance = new static();
+			}
+			return static::$instance;
+		}
+		
+		//private constructor (singleton)
+		private function __construct(){
 			$this->lang = (isSet($_SESSION['lang'])) ? $_SESSION['lang'] : $this->defaultLang;
 		}	
 		
