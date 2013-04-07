@@ -7,7 +7,7 @@
 //
 //content files are stored in content folder in subfolders of languages
 
-require_once(realpath(dirname(__FILE__).'/../core/SimpleBootstrapCore.php'));
+require_once(realpath(dirname(__FILE__).'/../core/BootstrapCore.php'));
 class Bootstrap extends SimpleBootstrapCore {
     protected $path     = 'content';										//path to pages folder without "/" at end & beginning
     protected $pages    = array(											//pages of website, first page is default page

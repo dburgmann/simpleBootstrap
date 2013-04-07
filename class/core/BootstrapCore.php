@@ -2,7 +2,7 @@
 require_once(realpath(dirname(__FILE__).'/../application/Language.php'));
 require_once(realpath(dirname(__FILE__).'/../application/Translator.php'));
 
-abstract class SimpleBootstrapCore {
+abstract class BootstrapCore {
 	protected $lang		= null;
 	protected $translator = null;
 
