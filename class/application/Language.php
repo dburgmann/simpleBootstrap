@@ -1,10 +1,11 @@
 <?php
-require_once('../core/LangCore.php'));
+require_once('class/core/LanguageCore.php');
 
-public class Language extends LangCore{
-	protected $defaultLang	= 'de';
+class Language extends LanguageCore{
+	protected $defaultLang	= 'de' ;
 	protected $allowedLangs = array(
-								'de'
+								'de',
+								'en'
 								);
 }
 

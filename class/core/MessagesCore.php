@@ -1,6 +1,6 @@
 <?php
-require_once('../application/Language.php'));
-require_once('../application/Translator.php'));
+require_once('class/application/Language.php');
+require_once('class/application/Translator.php');
 class MessagesCore{
 	private $added		= array();
 	private $lang		= null;

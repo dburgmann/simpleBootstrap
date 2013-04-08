@@ -7,17 +7,12 @@
 //
 //content files are stored in content folder in subfolders of languages
 
-require_once('../core/BootstrapCore.php'));
-class Bootstrap extends SimpleBootstrapCore {
+require_once('class/core/BootstrapCore.php');
+class Bootstrap extends BootstrapCore {
     protected $path     = 'content';										//path to pages folder without "/" at end & beginning
     protected $pages    = array(											//pages of website, first page is default page
                             'home',
-                            'page1',
                             'page2'
                             );
-
-    public function navigation(){
-		return;
-    }
 }
 ?>

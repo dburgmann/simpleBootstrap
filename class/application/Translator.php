@@ -1,10 +1,11 @@
 <?php
-require_once('../core/TranslatorCore.php'));
+require_once('class/core/TranslatorCore.php');
 
 class Translator extends TranslatorCore{
     protected $dictionary   = array(
-    							array('en', 		'de', 		'es'),
-    							array('house', 	'haus', 	'casa')
+    							array('en', 	'de'),
+    							array('home', 	'Startseite'),
+    							array('page2',	'Seite2')
     							);
     							
     protected $messages		= array(

@@ -1,8 +1,8 @@
 <?php
 require_once('MessagesCore.php');          
-require_once('../util/Form.php'); 
-require_once('../lib/phpmailer/class.phpmailer.php');
-require_once('../lib/valid.php');
+require_once('class/util/Form.php'); 
+require_once('class/lib/phpmailer/class.phpmailer.php');
+require_once('class/lib/valid.php');
 
 class ContactformCore {
     protected $messages	= null;
@@ -32,7 +32,7 @@ class ContactformCore {
 	*Constructor
 	**/
     public function  __construct() {
-    	$this->messages	= new Messages();
+    	$this->messages	= new MessagesCore();
     }
 
 

@@ -1,6 +1,6 @@
 <?php
-require_once('../application/Language.php'));
-require_once('../application/Translator.php'));
+require_once('class/application/Language.php');
+require_once('class/application/Translator.php');
 
 abstract class BootstrapCore {
 	protected $lang		= null;
@@ -13,8 +13,8 @@ abstract class BootstrapCore {
     protected $content 	= '';
     
     public function __construct(){
-    	$lang = Language::instance();
-    	$translator = new Translator();
+    	$this->lang = Language::instance();
+    	$this->translator = new Translator();
     }
     
     //routes the current request
@@ -28,12 +28,15 @@ abstract class BootstrapCore {
         }               
         
         //check if requested page does exist and if site file exists
-        $page  	= (isset($this->request['page'])) ? $this->request['page'] : $this->pages[0];
-        if(!in_array($this->page, $this->pages) OR !file_exists("{$this->path}/{$this->lang->language}/{$page}.php")){
+        $language	= $this->lang->language();
+        $page  		= (isset($this->request['page'])) ? $this->request['page'] : $this->pages[0];
+        if(!in_array($this->page, $this->pages) OR !file_exists("{$this->path}/{$language}/{$page}.php")){
         	$this->page = $this->pages[0];
         }
+        //TODO: 404 wenn auch std page nicht da
+        
         //load page
-        $this->content = file_get_contents("{$this->path}/{$this->lang->language}/{$page}.php");
+        $this->content = file_get_contents("{$this->path}/{$language}/{$page}.php");
     }
     
     //returns the content of current page
@@ -49,11 +52,11 @@ abstract class BootstrapCore {
     public function navigation(){
 		$str 		= '<div id="navigation">';
 		foreach ($this->pages as $page) {
-			$pageName = $this->translator->translate($page, 'en', $this->lang->language)
-			$str .= "<span class=\"naviElement\">{$pageName}</span>";
+			$pageName = $this->translator->translate($page, 'en', $this->lang->language());
+			$str .= "<a href=\"?page={$page}\"><span class=\"naviElement\">{$pageName}</span></a>";
 		}
 		$str .= '</div>';
 		return $str;
-    };    
+    }    
 }
 ?>

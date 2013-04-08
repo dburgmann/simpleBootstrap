@@ -1,5 +1,5 @@
 <?php
-require_once('../core/ContactformCore.php');
+require_once('class/core/ContactformCore.php');
 
 class Contactform extends ContactformCore{
 	protected $isSmtp        	= false;
@@ -11,7 +11,7 @@ class Contactform extends ContactformCore{
 
 	protected $owner           	= "max mustermann";
 	protected $domain         	= "www.dburgmann.de";
-	protected $processingPage 	= "http://www.dburgmann.de/showroom/cf";
+	protected $processingPage 	= "http://www.dburgmann.de/showroom/Bootstrap/index.php";
 	protected $sendingEmail   	= "kontakt@dburgmann.de";
 	protected $receivingEmail 	= "abzhibilt@gmail.com";
 	
