@@ -30,6 +30,7 @@ abstract class BootstrapCore {
         //check if requested page does exist and if site file exists
         $language	= $this->lang->language();
         $page  		= (isset($this->request['page'])) ? $this->request['page'] : $this->pages[0];
+        $page 		= $this->translator->translate($page, $language, 'en');
         if(!in_array($this->page, $this->pages) OR !file_exists("{$this->path}/{$language}/{$page}.php")){
         	$this->page = $this->pages[0];
         }
