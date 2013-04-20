@@ -28,7 +28,7 @@
     		</div>
 			<div id="content">
 				<?=$cf->form()?>
-	    		<?=$bootstrap->content()?>
+	    		<? include($bootstrap->content()) ?>
 		    </div>
 		    <?=$bootstrap->languageSelection()?>
     	</div>

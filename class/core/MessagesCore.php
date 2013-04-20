@@ -12,7 +12,7 @@ class MessagesCore{
 	}
 	
 	public function add($key, $value = ''){
-		if(isSet($this->messages[$key])) $this->added[$key] = $value;
+		$this->added[$key] = $value;
 	}
 	
 	public function toString($prefix = ""){
@@ -20,7 +20,7 @@ class MessagesCore{
 		
 		$html  = '<div id="'.$prefix.'messageBox">';
 		foreach ($this->added as $key => $value) {
-			$html .= '<p>'.sprintf($this->translator->message($key, $lang->language), ucfirst($value)).'</p>';
+			$html .= '<p>'.sprintf($this->translator->message($key, $this->lang->language()), ucfirst($value)).'</p>';
 		}
 		$html .= '</div>';
 		

@@ -36,7 +36,7 @@ abstract class BootstrapCore {
         //TODO: 404 wenn auch std page nicht da
         
         //load page
-        $this->content = file_get_contents("{$this->path}/{$language}/{$page}.php");
+        $this->content = "{$this->path}/{$language}/{$page}.php";
     }
     
     //returns the content of current page

@@ -6,13 +6,9 @@ abstract class TranslatorCore {
     //translates given word to given language (if in dictionary)
     public function translate($phrase, $from, $to, $usedDict=null){
     	$usedDict = ($usedDict == null)? $this->dictionary : $usedDict;
-    
-        $phrase = strtolower($phrase);
-        $from 	= strtolower($from);
-        $to 	= strtolower($to);
         
         //determine languages
-        $langs 		= $this->dictionary[0];
+        $langs 		= $usedDict[0];
         $fromPos 	= array_search($from, $langs);
         $toPos		= array_search($to, $langs);
         

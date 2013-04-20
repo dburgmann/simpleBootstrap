@@ -1,38 +1,45 @@
 <?php
-require_once('MessagesCore.php');          
+require_once('MessagesCore.php');
+require_once('class/application/Translator.php');
+require_once('class/application/Language.php');         
 require_once('class/util/Form.php'); 
 require_once('class/lib/phpmailer/class.phpmailer.php');
 require_once('class/lib/valid.php');
 
 class ContactformCore {
-    protected $messages	= null;
+	protected $messages			= null;
+	protected $translator 		= null;
+	protected $lang				= null;
    
-   	protected $prefix		= "";
-    protected $fields     	= array();
-    protected $values 		= array();
-    protected $mandatory	= array();
-    protected $validation	= array();
+   	protected $spamProtection 	= true;
+   	
+   	protected $prefix			= "";
+    protected $fields     		= array();
+    protected $values 			= array();
+    protected $mandatory		= array();
+    protected $validation		= array();
 
-	protected $isSmtp          = "";
-	protected $smtpServer      = "";
-	protected $smtpPort        = "";
-	protected $smtpUser        = "";
-	protected $smtpPass        = "";
-	protected $method		   = "";
+	protected $isSmtp          	= "";
+	protected $smtpServer      	= "";
+	protected $smtpPort        	= "";
+	protected $smtpUser        	= "";
+	protected $smtpPass        	= "";
+	protected $method		   	= "";
 
-    protected $owner           = "";
-    protected $domain          = "";
-    protected $processingPage  = "";
-    protected $sendingEmail    = "";
-    protected $receivingEmail  = "";
-
+    protected $owner           	= "";
+    protected $domain          	= "";
+    protected $processingPage  	= "";
+    protected $sendingEmail    	= "";
+    protected $receivingEmail  	= "";
 
 
 	/**
 	*Constructor
 	**/
     public function  __construct() {
-    	$this->messages	= new MessagesCore();
+    	$this->messages		= new MessagesCore();
+    	$this->translator 	= new Translator();
+    	$this->lang			= Language::instance();
     }
 
 
@@ -42,10 +49,12 @@ class ContactformCore {
     public function form(){
         $form = '<form accept-charset="utf-8" action="'.$this->processingPage.'" method="'.$this->method.'" name="'.$this->prefix.'form" id="'.$this->prefix.'form">';
         $htmlFields = $this->fieldsToHtml($this->fields);
+        
         foreach($htmlFields as $field => $html){
-        	$form .= Form::label($field, $this->prefix, in_array($field, $this->mandatory));
+        	$form .= Form::label($this->translator->translate($field, 'en', $this->lang->language()), $field, $this->prefix, in_array($field, $this->mandatory));
         	$form .= $html;
         }
+        $form .= '<span id="'.$this->prefix.'mandatoryNotice">'.$this->translator->message('mandatoryNotice', $this->lang->language()).'</span>';
         $form .= '<input type="submit" name="'.$this->prefix.'submit" id="'.$this->prefix.'submit" value="Senden" />';
         $form .= '</form>';
         $return ='<div id="'.$this->prefix.'wrapper">'.$this->messages->toString($this->prefix).trim($form).'</div>';         

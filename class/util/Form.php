@@ -19,7 +19,7 @@ class Form {
 		return $html;
 	}
 	
-	public static function label($name, $prefix = '', $mandatory = false){
+	public static function label($name, $for, $prefix = '', $mandatory = false){
 		$mandatoryStr = ($mandatory) ? '<span class="'.$prefix.'mandatory">*</span>' : '';
 		return  '<label for="'.$prefix.$name.'">'.ucfirst($name).$mandatoryStr.':</label>';
 	}

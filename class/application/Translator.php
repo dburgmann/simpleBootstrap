@@ -9,15 +9,28 @@ class Translator extends TranslatorCore{
     							);
     							
     protected $messages		= array(
-    							array('key', 'en', 'de', 'es')
+    							array('key', 'en', 'de'),
+    							array('mandatoryNotice',
+    							'Fields marked with <span class="cf_mandatory">*</span> are mandatory.',
+    							'Mit <span class="cf_mandatory">*</span> gekennzeichnete Felder müssen ausgefüllt werden'),
+    							array('success', 
+    							'Your message was sent successfully!', 
+    							'Ihre Nachricht wurde erfolgreich versendet'),
+    							array('tech', 
+    							'We are currently expierencing technical problems, please try again later.', 
+    							'Wir haben momentan technische Probleme, bitte probieren Sie es später noch einmal.'),
+    							array('required', 
+    							'Please fill in all mandatory fields!', 
+    							'Bitte füllen Sie alle Pflichtfelder aus!'),
+    							array('email', 
+    							'Please enter a valid email address!',
+    							'Bitte geben sie eine gültige E-Mail Adresse an!'),
+    							array('text', 
+    							'The %s field must contain only letters, numbers and the following special characters (. : , - _ ; ! ?).',
+    							'Das %s Feld darf nur Buchstaben Zahlen und die Sonderzeichen . : , - _ ; ! ? enthalten.'),
+    							array('numeric',
+    							'The %s field must contain only numbers.',
+    							'Das %s Feld darf nur Zahlen enthalten!')
     							);
-    	
-    							/* Fehlermeldungen
-    							$this->messages['success'] 	= "Ihre Nachricht wurde erfolgreich versendet";
-    							$this->messages['tech']		= "Wir haben momentan technische Probleme, bitte probieren Sie es später noch einmal!";
-    							$this->messages['required'] = "Bitte füllen Sie alle Pflichtfelder aus!";
-    							$this->messages['email'] 	= "Das %s Feld muss eine gültige E-Mail Adresse enthalten!";
-    							$this->messages['text'] 	= "Das %s Feld darf keine xyz enthalten!";
-    							$this->messages['numeric'] 	= "Das %s Feld darf nur Zahlen enthalten!";*/
 }
 ?>
