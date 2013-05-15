@@ -1,0 +1,4 @@
+AddDefaultCharset utf-8
+
+#RewriteEngine on
+#RewriteRule ^([a-z]+)/$ index.php?page=$1

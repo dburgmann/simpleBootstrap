@@ -21,7 +21,7 @@ class Form {
 	
 	public static function label($name, $for, $prefix = '', $mandatory = false){
 		$mandatoryStr = ($mandatory) ? '<span class="'.$prefix.'mandatory">*</span>' : '';
-		return  '<label for="'.$prefix.$name.'">'.ucfirst($name).$mandatoryStr.':</label>';
+		return  '<label for="'.$prefix.$for.'">'.ucfirst($name).$mandatoryStr.':</label>';
 	}
 
 }
